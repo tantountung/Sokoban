@@ -1,0 +1,46 @@
+* {
+    background-color: darkgrey;
+    margin: auto;
+}
+
+
+#opening {
+    font-family: Arial;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: beige;
+}
+
+#board {
+    background-color: chocolate;
+    height: 800px;
+    width: 950px;
+}
+
+.centerThis {
+    margin: auto;
+}
+
+.box {
+    height: 50px;
+    width: 50px;
+    float: left;
+    border: black solid 1px;
+}
+
+.B {
+    background-color: darkblue;
+}
+
+.G {
+    background-color: darkgoldenrod;
+}
+
+.P {
+    background-color: darkgreen;
+}
+
+.W {
+    background-color: black;
+}
