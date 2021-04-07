@@ -28,40 +28,59 @@ function initBoard() {
     // console.log(tileMap01.mapGrid[4][5]);
 
 
-    for (let y = 0; y < 8; y++) {
-       for (let x = 0; x < 8; x++) {
+    // for (let y = 0; y < 8; y++) {
+    //    for (let x = 0; x < 8; x++) {
 
-        if (data[x][y] = "B") {
-            makeBoxOnBoard("darkblue");            
-        } 
-        else if (data[x][y] = "G") {
-            makeBoxOnBoard("darkgoldenrod");            
-        } 
-        else if (data[x][y] = "P") {
-            makeBoxOnBoard("darkgreen");            
-        } 
-        else if (data[x][y] = "W") {
-            makeBoxOnBoard("black");            
-        } 
-        else {
-            makeBoxOnBoard("grey");
-        }
-       }           
-       }
+    //     if (data[x][y] = "B") {
+    //         makeBoxOnBoard("darkblue");            
+    //     } 
+    //     else if (data[x][y] = "G") {
+    //         makeBoxOnBoard("darkgoldenrod");            
+    //     } 
+    //     else if (data[x][y] = "P") {
+    //         makeBoxOnBoard("darkgreen");            
+    //     } 
+    //     else if (data[x][y] = "W") {
+    //         makeBoxOnBoard("black");            
+    //     } 
+    //     else {
+    //         makeBoxOnBoard("grey");
+    //     }
+    //    }           
+    //    }
            
 }
 
 
-function makeBoxOnBoard(colorOfBox) {
+function makeBoxOnBoard() {
 
     var newBox = document.createElement("div");
 
-    newBox.id = ++idCounter;
-   
-    newBox.classList.add("box");
-    newBox.classList.add(colorOfBox + "Box");
+    // newBox.id = ++idCounter;
 
+    for (let y = 0; y < 8; y++) {
+        for (let x = 0; x < 8; x++) {   
+
+    // newBox.classList.add("box");
+    // newBox.classList.add(colorOfBox + "Box");
+
+        if (data[x][y] = "B") {
+                newBox.classList.add("darkblueBox");            
+            } 
+        else if (data[x][y] = "G") {
+            newBox.classList.add("darkgoldenrodBox");            
+            } 
+        else if (data[x][y] = "P") {
+                newBox.classList.add("darkgreenBox");            
+            } 
+         else if (data[x][y] = "W") {
+                newBox.classList.add("blackBox");            
+            } 
+         else {
+                newBox.classList.add("greyBox");
+            }
     myBoard.appendChild(newBox);
+        }}
 }
 
 
@@ -70,7 +89,9 @@ function makeBoxOnBoard(colorOfBox) {
 
 // ----------- run code lines ----------------
 
-initBoard();
-console.log(tileMap01.mapGrid[4][6]);
+// initBoard();
+// console.log(tileMap01.mapGrid[4][6]);
 
 // makeBoxOnBoard("darkgreen"); test passed
+
+makeBoxOnBoard();
