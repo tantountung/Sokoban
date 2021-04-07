@@ -14,33 +14,40 @@
 
 #board {
     background-color: chocolate;
-    height: 800px;
-    width: 950px;
+    height: 1200px;
+    width: 1200px;
 }
 
 .centerThis {
-    margin: auto;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .box {
-    height: 50px;
-    width: 50px;
+    height: 150px;
+    width: 150px;
     float: left;
-    border: black solid 1px;
+    /* border: black dotted thin; */
+    background-color: transparent;
 }
 
-.B {
+.darkblueBox {
     background-color: darkblue;
 }
 
-.G {
+.darkgoldenrodBox {
     background-color: darkgoldenrod;
 }
 
-.P {
+.darkgreenBox {
     background-color: darkgreen;
 }
 
-.W {
+.blackBox {
     background-color: black;
+}
+
+.greyBox {
+    background-color: grey;
 }
