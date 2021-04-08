@@ -1,9 +1,6 @@
 //--------------- global variables -----------------------------------------------
 const myBoard = document.getElementById("board");
-const boardWidth = 950;
-const boardHeight = 800;
-var idCounter = 0;
-let data = [
+const data = [
 [" "," "," "," "," "," "," "," "],
 ["W","W","W","W","W","W","W","W"],
 ["W"," "," "," "," "," "," ","W"],
@@ -16,75 +13,63 @@ let data = [
 
 
 
-// ------ functions -----------------
-
-// //Create a function to generate the elements that will represent the tiles from the map array.
-// ▪ Give them a id and CSS.
-// ▪ Append them into your map element.
-
-function initBoard() {
-
-    // console.log(tileMap01.height);
-    // console.log(tileMap01.mapGrid[4][5]);
-
-
-    // for (let y = 0; y < 8; y++) {
-    //    for (let x = 0; x < 8; x++) {
-
-    //     if (data[x][y] = "B") {
-    //         makeBoxOnBoard("darkblue");            
-    //     } 
-    //     else if (data[x][y] = "G") {
-    //         makeBoxOnBoard("darkgoldenrod");            
-    //     } 
-    //     else if (data[x][y] = "P") {
-    //         makeBoxOnBoard("darkgreen");            
-    //     } 
-    //     else if (data[x][y] = "W") {
-    //         makeBoxOnBoard("black");            
-    //     } 
-    //     else {
-    //         makeBoxOnBoard("grey");
-    //     }
-    //    }           
-    //    }
-           
-}
-
-
-function makeBoxOnBoard() {
+function makeBoxOnBoard(color, y, x) {
 
     var newBox = document.createElement("div");
+    newBox.id = "y" + y + "x" + x;
 
-    // newBox.id = ++idCounter;
-
-    for (let y = 0; y < 8; y++) {
-        for (let x = 0; x < 8; x++) {   
-
-    // newBox.classList.add("box");
-    // newBox.classList.add(colorOfBox + "Box");
-
-        if (data[x][y] = "B") {
-                newBox.classList.add("darkblueBox");            
-            } 
-        else if (data[x][y] = "G") {
-            newBox.classList.add("darkgoldenrodBox");            
-            } 
-        else if (data[x][y] = "P") {
-                newBox.classList.add("darkgreenBox");            
-            } 
-         else if (data[x][y] = "W") {
-                newBox.classList.add("blackBox");            
-            } 
-         else {
-                newBox.classList.add("greyBox");
-            }
+    newBox.classList.add("box");
+    newBox.classList.add(color + "Box");
     myBoard.appendChild(newBox);
-        }}
 }
 
+for (let y = 0; y < data.length; y++) {
+        for (let x = 0; x < data[y].length; x++) { 
+
+        // console.log(data[4][1]); test passed
+        // console.log(data[y][x]);
+
+switch (data[y][x]) {
+
+    case "B":
+    makeBoxOnBoard("darkblue", y, x);  
+    break;
+
+    case "G":
+    makeBoxOnBoard("darkgoldenrod", y, x);
+    break;                           
+                       
+    case "P":
+    makeBoxOnBoard("darkgreen", y, x);
+    break;                           
+          
+    case "W":
+    makeBoxOnBoard("black", y, x);
+    break;                           
+          
+    default:
+    makeBoxOnBoard("grey", y, x);
+    break;                           
+} }}               
 
 
+        // if (data[y][x] = "B")
+        //        makeBoxOnBoard("darkblue", y, x);            
+                
+        // else if (data[y][x] = "G") 
+        //     makeBoxOnBoard("darkgoldenrod", y, x);                    
+             
+        // else if (data[y][x] = "P") 
+        //     makeBoxOnBoard("darkgreen", y, x);                         
+             
+        //  else if (data[y][x] = "W") 
+        //     makeBoxOnBoard("black", y, x);                       
+            
+        //  else 
+        //     makeBoxOnBoard("grey", y, x);             
+            
+    
+        // }}
 
 
 // ----------- run code lines ----------------
@@ -94,4 +79,3 @@ function makeBoxOnBoard() {
 
 // makeBoxOnBoard("darkgreen"); test passed
 
-makeBoxOnBoard();
