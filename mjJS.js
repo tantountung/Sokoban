@@ -53,7 +53,29 @@ switch (data[y][x]) {
 } }}               
 
 
-        // if (data[y][x] = "B")
+  
+function move(offsetPos) {
+    var playerElement = document.getElementsByClassName("darkgreenBox")[0];
+    // console.log(playerElement.id); test passed
+
+    // let x = playerElement.id.x;
+    // let y = playerElement.id.y;
+
+    var playerNextElementId = Number(playerElement.id) + Number(offsetPos);
+    console.log(playerNextElementId);
+    // var playerNextBox = document.getElementById(playerNextElementId);
+    // console.log(playerNextBox);
+
+    // if (playerNextElementId !== 0 && playerNextElementId <= idCounter) {
+    //     playerElement.classList.toggle("player");
+    //     playerNextBox.classList.toggle("player");
+    // }
+
+
+}
+
+
+// if (data[y][x] = "B")
         //        makeBoxOnBoard("darkblue", y, x);            
                 
         // else if (data[y][x] = "G") 
