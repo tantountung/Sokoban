@@ -63,33 +63,35 @@ function move(offsetPos) {
     console.log(playerElement.id);   
     var playerNextElementId = Number(playerElement.id) + Number(offsetPos);
     var playerNextBox = document.getElementById(playerNextElementId);
+    var playerNextTwoElementId = Number(playerElement.id) + Number(offsetPos*2);
+    var playerNextTwoBox = document.getElementById(playerNextTwoElementId);
     console.log(playerNextBox);
     
   
-    var wallElement =  document.getElementsByClassName("blackBox");
+    // var wallElement =  document.getElementsByClassName("blackBox");
 
-    var crateElement = document.getElementsByClassName("darkblueBox");  
-    var crateNextElementId = Number(crateElement.id) + Number(offsetPos);
-    var crateNextBox = document.getElementById(crateNextElementId);
-    console.log(crateNextBox);
+    // var crateElement = document.getElementsByClassName("darkblueBox");  
+    // var crateNextElementId = Number(crateElement.id) + Number(offsetPos);
+    // var crateNextBox = document.getElementById(crateNextElementId);
+    // console.log(crateNextBox);
 
     switch (playerNextBox) {
         
-        case (wallElement.id):
-            return 0;
+        case (playerNextBox.classList.contains("blackBox")):
+            return null;
             break;
 
-        case (crateElement.id):
+        case (playerNextBox.classList.contains("darkblueBox")):
            
-            if (crateNextBox === wallElement.id || crateNextBox === crateElement.id) {
-                return 0;
+            if (playerNextTwoBox.classList.contains("blackBox") || playerNextTwoBox.classList.contains("darkblueBox")) {
+                return null;
             }
             else {
+                playerNextBox .classList.toggle("darkblueBox");
+                playerNextTwoBox.classList.toggle("darkblueBox");
                 playerElement.classList.toggle("darkgreenBox");
                 playerNextBox.classList.toggle("darkgreenBox");
-                crateElement.classList.toggle("darkblueBox");
-                crateNextBox.classList.toggle("darkblueBox");
-
+                
                 if (document.getElementsByClassName("darkgoldenrodBox") === null) {
                     alert("YOU WIN!!")
                 }
