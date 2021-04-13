@@ -10,13 +10,16 @@ const data = [
 ["W","W","W","W","W","W","W","W"],
 [" "," "," "," "," "," "," "," "]
 ];
+var idCounter = 0;
+var hop = data[0].length;
 
 
-
-function makeBoxOnBoard(color, y, x) {
+function makeBoxOnBoard(color) {
 
     var newBox = document.createElement("div");
-    newBox.id = "y" + y + "x" + x;
+
+    newBox.id = ++idCounter;
+    // newBox.id = "y" + y + "x" + x;
 
     newBox.classList.add("box");
     newBox.classList.add(color + "Box");
@@ -32,37 +35,92 @@ for (let y = 0; y < data.length; y++) {
 switch (data[y][x]) {
 
     case "B":
-    makeBoxOnBoard("darkblue", y, x);  
+    makeBoxOnBoard("darkblue");  
     break;
 
     case "G":
-    makeBoxOnBoard("darkgoldenrod", y, x);
+    makeBoxOnBoard("darkgoldenrod");
     break;                           
                        
     case "P":
-    makeBoxOnBoard("darkgreen", y, x);
+    makeBoxOnBoard("darkgreen");
     break;                           
           
     case "W":
-    makeBoxOnBoard("black", y, x);
+    makeBoxOnBoard("black");
     break;                           
           
     default:
-    makeBoxOnBoard("grey", y, x);
+    makeBoxOnBoard("");
     break;                           
 } }}               
 
 
   
 function move(offsetPos) {
+
     var playerElement = document.getElementsByClassName("darkgreenBox")[0];
-    // console.log(playerElement.id); test passed
-
-    // let x = playerElement.id.x;
-    // let y = playerElement.id.y;
-
+    console.log(playerElement.id);   
     var playerNextElementId = Number(playerElement.id) + Number(offsetPos);
-    console.log(playerNextElementId);
+    var playerNextBox = document.getElementById(playerNextElementId);
+    console.log(playerNextBox);
+    
+  
+    var wallElement =  document.getElementsByClassName("blackBox");
+
+    var crateElement = document.getElementsByClassName("darkblueBox");  
+    var crateNextElementId = Number(crateElement.id) + Number(offsetPos);
+    var crateNextBox = document.getElementById(crateNextElementId);
+    console.log(crateNextBox);
+
+    switch (playerNextBox) {
+        
+        case (wallElement.id):
+            return 0;
+            break;
+
+        case (crateElement.id):
+           
+            if (crateNextBox === wallElement.id || crateNextBox === crateElement.id) {
+                return 0;
+            }
+            else {
+                playerElement.classList.toggle("darkgreenBox");
+                playerNextBox.classList.toggle("darkgreenBox");
+                crateElement.classList.toggle("darkblueBox");
+                crateNextBox.classList.toggle("darkblueBox");
+
+                if (document.getElementsByClassName("darkgoldenrodBox") === null) {
+                    alert("YOU WIN!!")
+                }
+            }
+            break;
+
+        default:
+            playerElement.classList.toggle("darkgreenBox");
+            playerNextBox.classList.toggle("darkgreenBox");
+            break;
+    }
+
+ 
+    // if (playerNextElementId !== document.getElementsByClassName("blackBox")[0].id && playerNextElementId !== document.getElementsByClassName("darkblueBox")[0].id) {
+    //     playerElement.classList.toggle("darkgreenBox");
+    //     playerNextBox.classList.toggle("darkgreenBox");
+    // }
+    // else {
+    //     return 0;
+    // }
+
+    // var x = playerElement.x;
+    // var y = playerElement.y;
+
+    // console.log(playerElement.id.y);
+    // console.log(playerElement.id.x);
+
+    // var nextVertical = Number(playerElement.id.y) + Number(a);
+    // var nextHorizontal = Number(playerElement.id.x) + Number(b);
+    // var nextId = "x" + nextHorizontal + "y" + nextVertical;
+
     // var playerNextBox = document.getElementById(playerNextElementId);
     // console.log(playerNextBox);
 
