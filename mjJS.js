@@ -11,7 +11,7 @@ const data = [
 [" "," "," "," "," "," "," "," "]
 ];
 var idCounter = 0;
-var hop = data[0].length;
+// var hop = data[0].length;
 
 
 function makeBoxOnBoard(color) {
@@ -62,79 +62,57 @@ function move(offsetPos) {
     var playerElement = document.getElementsByClassName("darkgreenBox")[0];
     console.log(playerElement.id);   
     var playerNextElementId = Number(playerElement.id) + Number(offsetPos);
+    var playerNextTwoElementId = Number(playerElement.id) + Number(2*offsetPos);
     var playerNextBox = document.getElementById(playerNextElementId);
-    var playerNextTwoElementId = Number(playerElement.id) + Number(offsetPos*2);
-    var playerNextTwoBox = document.getElementById(playerNextTwoElementId);
+    var jumpTwoBox = document.getElementById(playerNextTwoElementId);
     console.log(playerNextBox);
-    
-  
-    // var wallElement =  document.getElementsByClassName("blackBox");
-
-    // var crateElement = document.getElementsByClassName("darkblueBox");  
-    // var crateNextElementId = Number(crateElement.id) + Number(offsetPos);
-    // var crateNextBox = document.getElementById(crateNextElementId);
-    // console.log(crateNextBox);
-
-    switch (playerNextBox) {
-        
-        case (playerNextBox.classList.contains("blackBox")):
-            return null;
-            break;
-
-        case (playerNextBox.classList.contains("darkblueBox")):
-           
-            if (playerNextTwoBox.classList.contains("blackBox") || playerNextTwoBox.classList.contains("darkblueBox")) {
-                return null;
-            }
-            else {
-                playerNextBox .classList.toggle("darkblueBox");
-                playerNextTwoBox.classList.toggle("darkblueBox");
-                playerElement.classList.toggle("darkgreenBox");
-                playerNextBox.classList.toggle("darkgreenBox");
-                
-                if (document.getElementsByClassName("darkgoldenrodBox") === null) {
-                    alert("YOU WIN!!")
-                }
-            }
-            break;
-
-        default:
-            playerElement.classList.toggle("darkgreenBox");
-            playerNextBox.classList.toggle("darkgreenBox");
-            break;
+   
+    if (playerNextBox.classList.contains("blackBox")) {
+        return;
     }
 
- 
-    // if (playerNextElementId !== document.getElementsByClassName("blackBox")[0].id && playerNextElementId !== document.getElementsByClassName("darkblueBox")[0].id) {
-    //     playerElement.classList.toggle("darkgreenBox");
-    //     playerNextBox.classList.toggle("darkgreenBox");
-    // }
-    // else {
-    //     return 0;
-    // }
+    else if (playerNextBox.classList.contains("darkblueBox"))  {
+        
+        if (jumpTwoBox.classList.contains("blackBox") || jumpTwoBox.classList.contains("darkblueBox")) {
+            return;
+        }
+        else {
+            playerNextBox.classList.toggle("darkblueBox");
+            jumpTwoBox.classList.toggle("darkblueBox");
+            playerElement.classList.toggle("darkgreenBox");
+            playerNextBox.classList.toggle("darkgreenBox");
 
-    // var x = playerElement.x;
-    // var y = playerElement.y;
+            var goalBox = document.getElementsByClassName("darkgoldenrodBox");
+            var totalGoal = 0;
 
-    // console.log(playerElement.id.y);
-    // console.log(playerElement.id.x);
+            for(let i = 0; i < goalBox.length; i++) {
+              if(goalBox[i].classList.contains("darkblueBox"))
+                 {
+                      totalGoal++;
+                  }
+             }
+            
+            if(totalGoal == goalBox.length)
+                {
+                    alert("YOU WIN!!!")
+                }
+        }
 
-    // var nextVertical = Number(playerElement.id.y) + Number(a);
-    // var nextHorizontal = Number(playerElement.id.x) + Number(b);
-    // var nextId = "x" + nextHorizontal + "y" + nextVertical;
+    }
 
-    // var playerNextBox = document.getElementById(playerNextElementId);
-    // console.log(playerNextBox);
-
-    // if (playerNextElementId !== 0 && playerNextElementId <= idCounter) {
-    //     playerElement.classList.toggle("player");
-    //     playerNextBox.classList.toggle("player");
-    // }
-
+    else {
+        playerElement.classList.toggle("darkgreenBox");
+        playerNextBox.classList.toggle("darkgreenBox");
+    }
 
 }
 
+function winStatus () {    
+    
 
+}
+
+winStatus();
 // if (data[y][x] = "B")
         //        makeBoxOnBoard("darkblue", y, x);            
                 

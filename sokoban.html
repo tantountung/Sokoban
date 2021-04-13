@@ -14,10 +14,19 @@
 <body>
 
     <h1 id="opening">Try to put blue box (BOX) in the yellow box (GOAL) position by moving the green box (PERSON)</h1>
+   
+    <div class="centerThismovementDiv">
+        <p>Move green box</p>
+        <button onclick="move(-1)">left</button>
+        <button onclick="move(1)">right</button>
+        <button onclick="move(8)">down</button>
+        <button onclick="move(-8)">up</button>
+      </div>
+    
+      <div id="board" class="centerThis"></div>
 
-<div id="board" class="centerThis"></div>
+    <script src="mjJS.js"></script>  
 
-  <script src="mjJS.js"></script>  
 </body>
 </html>
 
